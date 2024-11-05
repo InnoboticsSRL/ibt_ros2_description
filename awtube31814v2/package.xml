@@ -1,0 +1,32 @@
+<package format="2">
+  <name>awtube31814v2</name>
+  <version>1.0.0</version>
+  <description>
+    <p>URDF Description package for FASE A</p>
+    <p>This package contains configuration data, 3D models and launch files for FASE A robot</p>
+  </description>
+  <license>All rights reserved.</license>
+
+  <author>AS</author>
+  <maintainer email="sofia@automationware.it" />
+  <maintainer email="deirossi@automationware.it">Mattia Dei Rossi</maintainer>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>ament_index_python</exec_depend>
+  <!-- <exec_depend>gazebo_ros2_control</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend> -->
+  <exec_depend>joint_state_broadcaster</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>position_controllers</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>ros2_controllers</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
