@@ -112,8 +112,8 @@
     <origin rpy="-3.1416 0 -3.1416" xyz="0 0.725 0.0495"/>
     <parent link="awtube_link2"/>
     <child link="awtube_link3"/>
-    <axis xyz="0 0 -1"/>
-    <limit effort="350" lower="-4.71" upper="1.57" velocity="1.24"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="350" lower="-4.71" upper="4.71" velocity="1.24"/>
     <dynamics damping="1" friction="0.1"/>
   </joint>
   <link name="awtube_link4">
@@ -173,7 +173,7 @@
     <parent link="awtube_link4"/>
     <child link="awtube_link5"/>
     <axis xyz="0 0 -1"/>
-    <limit effort="145" lower="-1.6" upper="4.71" velocity="2.71"/>
+    <limit effort="145" lower="-4.71" upper="4.71" velocity="2.71"/>
     <dynamics damping="1" friction="0.1"/>
   </joint>
   <link name="awtube_link6">
