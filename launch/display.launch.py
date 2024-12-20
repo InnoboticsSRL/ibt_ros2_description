@@ -1,4 +1,4 @@
-# @brief     Launch file for visualizing the model of the robofox robot
+# @brief     Launch file for visualizing the models of the robofox robot
 #
 # @author    Mattia Dei Rossi <mattia.deirossi@innobotics.it>
 # @copyright (C) IBT
@@ -10,21 +10,40 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration
 from launch_ros.actions import Node
-
+from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
-    # Parameters
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    declared_arguments = []
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "robofox_type",
+            description="Type/series of used IBT robot.",
+            choices=["61814v3"],
+            default_value="61814v3",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "prefix",
+            default_value='robofox',
+            description="Prefix of the joint names, useful for "
+            "multi-robot setup. If changed than also joint names in the controllers' configuration "
+            "have to be updated.",
+        )
+    )
 
-    pkg_dir = get_package_share_directory('robofox')
+    robofox_type = LaunchConfiguration("robofox_type")
+    prefix = LaunchConfiguration("prefix")
+    
+    pkg_dir = get_package_share_directory('ibt_ros2_description')
 
     # Configuration files
     xacro_file = os.path.join(pkg_dir, 'xacro', 'robofox.urdf.xacro')
     robot_description = Command([FindExecutable(name='xacro'),
                                  ' ', xacro_file,
                                  ' ', 'name:=robofox',
-                                 ' ', 'robofox_type:=61814v3',
-                                 ' ', 'prefix:=robofox'
+                                 ' ', 'robofox_type:=', robofox_type,
+                                 ' ', 'prefix:=', prefix
                                  ])
     rviz_config_path = os.path.join(pkg_dir, 'config', 'config.rviz')
 
@@ -35,7 +54,6 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='screen',
         parameters=[
-            {'use_sim_time': use_sim_time},
             {'robot_description': robot_description}
         ]
     )
@@ -59,4 +77,4 @@ def generate_launch_description():
         rviz_node
     ]
 
-    return LaunchDescription(nodes)
+    return LaunchDescription(declared_arguments + nodes)

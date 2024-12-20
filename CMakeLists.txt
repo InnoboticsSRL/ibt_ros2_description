@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(robofox)
+project(ibt_ros2_description)
 
 # find dependencies
 find_package(ament_cmake REQUIRED)

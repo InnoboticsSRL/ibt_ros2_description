@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="robofox">
 
+    <xacro:arg name="prefix" default="robofox" />
     <xacro:arg name="robofox_type" default="61814v3" />
     <xacro:arg name="physical_params_file"
-        default="$(find robofox)/config/$(arg robofox_type)/physical_parameters.yaml" />
+        default="$(find ibt_ros2_description)/config/$(arg robofox_type)/physical_parameters.yaml" />
 
-    <xacro:include filename="$(find robofox)/xacro/robofox.xacro" />
+    <xacro:include filename="$(find ibt_ros2_description)/xacro/robofox.xacro" />
 
     <xacro:robofox
+        prefix="$(arg prefix)"
         physical_params_file="$(arg physical_params_file)"
     >
         <origin xyz="0 0 0" rpy="0 0 0" />

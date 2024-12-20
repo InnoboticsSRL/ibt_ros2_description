@@ -14,7 +14,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/awtube3_baselink.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/visual/baselink.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1"/>
@@ -23,7 +23,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/controllo/awtube3_baselink.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/collision/baselink.STL"/>
       </geometry>
     </collision>
   </link>
@@ -36,7 +36,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.119"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/awtube3_link1.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/visual/link1.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1"/>
@@ -45,7 +45,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/controllo/awtube3_link1.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/collision/link1.STL"/>
       </geometry>
     </collision>
   </link>
@@ -66,7 +66,7 @@
     <visual>
       <origin rpy="-1.5707963267948966 -1.5707963267948966 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/awtube3_link2.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/visual/link2.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1"/>
@@ -75,7 +75,7 @@
     <collision>
       <origin rpy="-1.5707963267948966 -1.5707963267948966 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/controllo/awtube3_link2.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/collision/link2.STL"/>
       </geometry>
     </collision>
   </link>
@@ -96,7 +96,7 @@
     <visual>
       <origin rpy="0 0 3.141592653589793" xyz="0.725 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/awtube3_link3.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/visual/link3.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1"/>
@@ -105,7 +105,7 @@
     <collision>
       <origin rpy="0 0 3.141592653589793" xyz="0.725 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/controllo/awtube3_link3.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/collision/link3.STL"/>
       </geometry>
     </collision>
   </link>
@@ -126,7 +126,7 @@
     <visual>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/awtube3_link4.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/visual/link4.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1"/>
@@ -135,7 +135,7 @@
     <collision>
       <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/controllo/awtube3_link4.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/collision/link4.STL"/>
       </geometry>
     </collision>
   </link>
@@ -156,7 +156,7 @@
     <visual>
       <origin rpy="-1.5707963267948966 1.5707963267948966 0" xyz="0 0 0.6751"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/awtube3_link5.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/visual/link5.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.69804 0.69804 0.69804 1"/>
@@ -165,7 +165,7 @@
     <collision>
       <origin rpy="-1.5707963267948966 1.5707963267948966 0" xyz="0 0 0.6751"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/controllo/awtube3_link5.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/collision/link5.STL"/>
       </geometry>
     </collision>
   </link>
@@ -186,7 +186,7 @@
     <visual>
       <origin rpy="1.5707963267948966 3.141592653589793 0" xyz="0 -0.36 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/awtube3_link6.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/visual/link6.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.8902 0.8902 0.91373 1"/>
@@ -195,7 +195,7 @@
     <collision>
       <origin rpy="1.5707963267948966 3.141592653589793 0" xyz="0 -0.36 0"/>
       <geometry>
-        <mesh filename="package://robofox/meshes/controllo/awtube3_link6.STL"/>
+        <mesh filename="package://ibt_ros2_description/meshes/robofox_type/collision/link6.STL"/>
       </geometry>
     </collision>
   </link>
