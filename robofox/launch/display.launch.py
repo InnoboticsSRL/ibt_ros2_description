@@ -1,7 +1,7 @@
-## @brief     Launch file for visualizing the model of the awtube31210v1 robot
+# @brief     Launch file for visualizing the model of the robofox robot
 #
-## @author    Mattia Dei Rossi <deirossi@automationware.it>
-## @copyright (C) Automationware
+# @author    Mattia Dei Rossi <mattia.deirossi@innobotics.it>
+# @copyright (C) IBT
 
 
 import os
@@ -16,11 +16,16 @@ def generate_launch_description():
     # Parameters
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    pkg_dir = get_package_share_directory('awtube31814v2')
-    
+    pkg_dir = get_package_share_directory('robofox')
+
     # Configuration files
-    xacro_file = os.path.join(pkg_dir, 'xacro', 'awtube31814v2.urdf.xacro')
-    robot_description = Command([FindExecutable(name='xacro'), ' ', xacro_file])
+    xacro_file = os.path.join(pkg_dir, 'xacro', 'robofox.urdf.xacro')
+    robot_description = Command([FindExecutable(name='xacro'),
+                                 ' ', xacro_file,
+                                 ' ', 'name:=robofox',
+                                 ' ', 'robofox_type:=61814v3',
+                                 ' ', 'prefix:=robofox'
+                                 ])
     rviz_config_path = os.path.join(pkg_dir, 'config', 'config.rviz')
 
     # Nodes

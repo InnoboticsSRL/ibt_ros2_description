@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- robofox macro -->
+  <xacro:macro name="robofox"
+    params="
+    prefix:='robofox' 
+    connected_to:='' 
+    *origin
+    physical_params_file"
+  >
+    <xacro:property name="physical_params"
+      value="${physical_params_file}" />
+    <xacro:property name="config_physical_parameters"
+      value="${xacro.load_yaml(physical_params)}" />
+    <xacro:property name="sec_inertia_parameters"
+      value="${config_physical_parameters['inertial_parameters']}" />
+
+    <!-- INERTIA PARAMETERS -->
+    <!-- mass -->
+    <xacro:property name="base_link_mass" value="${sec_inertia_parameters['base_link']['mass']}"
+      scope="parent" />
+    <xacro:property name="link1_mass" value="${sec_inertia_parameters['link1']['mass']}"
+      scope="parent" />
+    <xacro:property name="link2_mass" value="${sec_inertia_parameters['link2']['mass']}"
+      scope="parent" />
+    <xacro:property name="link3_mass" value="${sec_inertia_parameters['link3']['mass']}"
+      scope="parent" />
+    <xacro:property name="link4_mass" value="${sec_inertia_parameters['link4']['mass']}"
+      scope="parent" />
+    <xacro:property name="link5_mass" value="${sec_inertia_parameters['link5']['mass']}"
+      scope="parent" />
+    <xacro:property name="link6_mass" value="${sec_inertia_parameters['link6']['mass']}"
+      scope="parent" />
+
+    <!-- center of mass -->
+    <xacro:property name="base_link_mass_trans"
+      value="${sec_inertia_parameters['base_link']['center_of_mass']['translation']}"
+      scope="parent" />
+    <xacro:property name="link1_mass_trans"
+      value="${sec_inertia_parameters['link1']['center_of_mass']['translation']}"
+      scope="parent" />
+    <xacro:property name="link2_mass_trans"
+      value="${sec_inertia_parameters['link2']['center_of_mass']['translation']}"
+      scope="parent" />
+    <xacro:property name="link3_mass_trans"
+      value="${sec_inertia_parameters['link3']['center_of_mass']['translation']}"
+      scope="parent" />
+    <xacro:property name="link4_mass_trans"
+      value="${sec_inertia_parameters['link4']['center_of_mass']['translation']}"
+      scope="parent" />
+    <xacro:property name="link5_mass_trans"
+      value="${sec_inertia_parameters['link5']['center_of_mass']['translation']}"
+      scope="parent" />
+    <xacro:property name="link6_mass_trans"
+      value="${sec_inertia_parameters['link6']['center_of_mass']['translation']}"
+      scope="parent" />
+
+    <xacro:property name="base_link_mass_rot"
+      value="${sec_inertia_parameters['base_link']['center_of_mass']['rotation']}"
+      scope="parent" />
+    <xacro:property name="link1_mass_rot"
+      value="${sec_inertia_parameters['link1']['center_of_mass']['rotation']}"
+      scope="parent" />
+    <xacro:property name="link2_mass_rot"
+      value="${sec_inertia_parameters['link2']['center_of_mass']['rotation']}"
+      scope="parent" />
+    <xacro:property name="link3_mass_rot"
+      value="${sec_inertia_parameters['link3']['center_of_mass']['rotation']}"
+      scope="parent" />
+    <xacro:property name="link4_mass_rot"
+      value="${sec_inertia_parameters['link4']['center_of_mass']['rotation']}"
+      scope="parent" />
+    <xacro:property name="link5_mass_rot"
+      value="${sec_inertia_parameters['link5']['center_of_mass']['rotation']}"
+      scope="parent" />
+    <xacro:property name="link6_mass_rot"
+      value="${sec_inertia_parameters['link6']['center_of_mass']['rotation']}"
+      scope="parent" />
+
+    <!-- center of mass -->
+    <xacro:property name="base_link_inertial"
+      value="${sec_inertia_parameters['base_link']['inertial']}"
+      scope="parent" />
+    <xacro:property name="link1_inertial" value="${sec_inertia_parameters['link1']['inertial']}"
+      scope="parent" />
+    <xacro:property name="link2_inertial" value="${sec_inertia_parameters['link2']['inertial']}"
+      scope="parent" />
+    <xacro:property name="link3_inertial" value="${sec_inertia_parameters['link3']['inertial']}"
+      scope="parent" />
+    <xacro:property name="link4_inertial" value="${sec_inertia_parameters['link4']['inertial']}"
+      scope="parent" />
+    <xacro:property name="link5_inertial" value="${sec_inertia_parameters['link5']['inertial']}"
+      scope="parent" />
+    <xacro:property name="link6_inertial" value="${sec_inertia_parameters['link6']['inertial']}"
+      scope="parent" />
+
+    <!-- virtual joint -->
+    <xacro:unless value="${not connected_to}">
+      <joint name="world" type="fixed">
+        <parent link="${connected_to}" />
+        <child link="${prefix}_base_link" />
+        <xacro:insert_block name="origin" />
+      </joint>
+    </xacro:unless>
+
+    <!-- chain -->
+    <link
+      name="${prefix}_base_link">
+      <inertial>
+        <origin
+          xyz="${base_link_mass_trans['x']} ${base_link_mass_trans['y']} ${base_link_mass_trans['z']}"
+          rpy="${base_link_mass_rot['r']} ${base_link_mass_rot['p']} ${base_link_mass_rot['y']}" />
+        <mass value="${base_link_mass}" />
+        <inertia
+          ixx="${base_link_inertial['ixx']}"
+          ixy="${base_link_inertial['ixy']}"
+          ixz="${base_link_inertial['ixz']}"
+          iyy="${base_link_inertial['iyy']}"
+          iyz="${base_link_inertial['iyz']}"
+          izz="${base_link_inertial['izz']}" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/awtube3_baselink.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/controllo/awtube3_baselink.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link
+      name="${prefix}_link1">
+      <inertial>
+        <origin
+          xyz="${link1_mass_trans['x']} ${link1_mass_trans['y']} ${link1_mass_trans['z']}"
+          rpy="${link1_mass_rot['r']} ${link1_mass_rot['p']} ${link1_mass_rot['y']}" />
+        <mass value="${link1_mass}" />
+        <inertia
+          ixx="${link1_inertial['ixx']}"
+          ixy="${link1_inertial['ixy']}"
+          ixz="${link1_inertial['ixz']}"
+          iyy="${link1_inertial['iyy']}"
+          iyz="${link1_inertial['iyz']}"
+          izz="${link1_inertial['izz']}" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0.119"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/awtube3_link1.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/controllo/awtube3_link1.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${prefix}_joint1"
+      type="revolute">
+      <origin
+        xyz="0 0 0.119"
+        rpy="0 0 0" />
+      <parent
+        link="${prefix}_base_link" />
+      <child
+        link="${prefix}_link1" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-${pi}"
+        upper="${pi}"
+        effort="600"
+        velocity="1.2436" />
+      <dynamics
+        damping="1"
+        friction="0.1" />
+    </joint>
+    <link
+      name="${prefix}_link2">
+      <inertial>
+        <origin
+          xyz="${link2_mass_trans['x']} ${link2_mass_trans['y']} ${link2_mass_trans['z']}"
+          rpy="${link2_mass_rot['r']} ${link2_mass_rot['p']} ${link2_mass_rot['y']}" />
+        <mass value="${link2_mass}" />
+        <inertia
+          ixx="${link2_inertial['ixx']}"
+          ixy="${link2_inertial['ixy']}"
+          ixz="${link2_inertial['ixz']}"
+          iyy="${link2_inertial['iyy']}"
+          iyz="${link2_inertial['iyz']}"
+          izz="${link2_inertial['izz']}" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="-${pi/2.0} -${pi/2.0} 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/awtube3_link2.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="-${pi/2.0} -${pi/2.0} 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/controllo/awtube3_link2.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${prefix}_joint2"
+      type="revolute">
+      <origin
+        xyz="0 0 0"
+        rpy="-${pi/2.0} -${pi/2.0} 0" />
+      <parent
+        link="${prefix}_link1" />
+      <child
+        link="${prefix}_link2" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-${pi}"
+        upper="${pi}"
+        effort="690"
+        velocity="0.86" />
+      <dynamics
+        damping="1"
+        friction="0.1" />
+    </joint>
+    <link
+      name="${prefix}_link3">
+      <inertial>
+        <origin
+          xyz="${link3_mass_trans['x']} ${link3_mass_trans['y']} ${link3_mass_trans['z']}"
+          rpy="${link3_mass_rot['r']} ${link3_mass_rot['p']} ${link3_mass_rot['y']}" />
+        <mass value="${link3_mass}" />
+        <inertia
+          ixx="${link3_inertial['ixx']}"
+          ixy="${link3_inertial['ixy']}"
+          ixz="${link3_inertial['ixz']}"
+          iyy="${link3_inertial['iyy']}"
+          iyz="${link3_inertial['iyz']}"
+          izz="${link3_inertial['izz']}" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0.725 0 0"
+          rpy="0 0 ${pi}" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/awtube3_link3.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0.725 0 0"
+          rpy="0 0 ${pi}" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/controllo/awtube3_link3.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${prefix}_joint3"
+      type="revolute">
+      <origin
+        xyz="0.725 0 0"
+        rpy="0 0 ${pi}" />
+      <parent
+        link="${prefix}_link2" />
+      <child
+        link="${prefix}_link3" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-4.71"
+        upper="4.71"
+        effort="350"
+        velocity="1.24" />
+      <dynamics
+        damping="1"
+        friction="0.1" />
+    </joint>
+    <link
+      name="${prefix}_link4">
+      <inertial>
+        <origin
+          xyz="${link4_mass_trans['x']} ${link4_mass_trans['y']} ${link4_mass_trans['z']}"
+          rpy="${link4_mass_rot['r']} ${link4_mass_rot['p']} ${link4_mass_rot['y']}" />
+        <mass value="${link4_mass}" />
+        <inertia
+          ixx="${link4_inertial['ixx']}"
+          ixy="${link4_inertial['ixy']}"
+          ixz="${link4_inertial['ixz']}"
+          iyy="${link4_inertial['iyy']}"
+          iyz="${link4_inertial['iyz']}"
+          izz="${link4_inertial['izz']}" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="${pi/2.0} 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/awtube3_link4.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="${pi/2.0} 0 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/controllo/awtube3_link4.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${prefix}_joint4"
+      type="revolute">
+      <origin
+        xyz="0 0 0"
+        rpy="${pi/2.0} 0 0" />
+      <parent
+        link="${prefix}_link3" />
+      <child
+        link="${prefix}_link4" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-8.0"
+        upper="8.0"
+        effort="145"
+        velocity="2.71" />
+      <dynamics
+        damping="1"
+        friction="0.1" />
+    </joint>
+    <link
+      name="${prefix}_link5">
+      <inertial>
+        <origin
+          xyz="${link5_mass_trans['x']} ${link5_mass_trans['y']} ${link5_mass_trans['z']}"
+          rpy="${link5_mass_rot['r']} ${link5_mass_rot['p']} ${link5_mass_rot['y']}" />
+        <mass value="${link5_mass}" />
+        <inertia
+          ixx="${link5_inertial['ixx']}"
+          ixy="${link5_inertial['ixy']}"
+          ixz="${link5_inertial['ixz']}"
+          iyy="${link5_inertial['iyy']}"
+          iyz="${link5_inertial['iyz']}"
+          izz="${link5_inertial['izz']}" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0.6751"
+          rpy="-${pi/2.0} ${pi/2.0} 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/awtube3_link5.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.69804 0.69804 0.69804 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0.6751"
+          rpy="-${pi/2.0} ${pi/2.0} 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/controllo/awtube3_link5.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${prefix}_joint5"
+      type="revolute">
+      <origin
+        xyz="0 0 0.6751"
+        rpy="-${pi/2.0} ${pi/2.0} 0" />
+      <parent
+        link="${prefix}_link4" />
+      <child
+        link="${prefix}_link5" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-4.71"
+        upper="4.71"
+        effort="145"
+        velocity="2.71" />
+      <dynamics
+        damping="1"
+        friction="0.1" />
+    </joint>
+    <link
+      name="${prefix}_link6">
+      <inertial>
+        <origin
+          xyz="${link6_mass_trans['x']} ${link6_mass_trans['y']} ${link6_mass_trans['z']}"
+          rpy="${link6_mass_rot['r']} ${link6_mass_rot['p']} ${link6_mass_rot['y']}" />
+        <mass value="${link6_mass}" />
+        <inertia
+          ixx="${link6_inertial['ixx']}"
+          ixy="${link6_inertial['ixy']}"
+          ixz="${link6_inertial['ixz']}"
+          iyy="${link6_inertial['iyy']}"
+          iyz="${link6_inertial['iyz']}"
+          izz="${link6_inertial['izz']}" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 -0.36 0"
+          rpy="${pi/2.0} ${pi} 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/awtube3_link6.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.8902 0.8902 0.91373 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 -0.36 0"
+          rpy="${pi/2.0} ${pi} 0" />
+        <geometry>
+          <mesh
+            filename="package://robofox/meshes/controllo/awtube3_link6.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="${prefix}_joint6"
+      type="revolute">
+      <origin
+        xyz="0 -0.36 0"
+        rpy="${pi/2.0} ${pi} 0" />
+      <parent
+        link="${prefix}_link5" />
+      <child
+        link="${prefix}_link6" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-8.0"
+        upper="8.0"
+        effort="85"
+        velocity="3.61" />
+      <dynamics
+        damping="1"
+        friction="0.1" />
+    </joint>
+
+  </xacro:macro>
+
+</robot>

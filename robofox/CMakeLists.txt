@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(awtube31814v2)
+project(robofox)
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
