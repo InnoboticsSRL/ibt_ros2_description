@@ -18,17 +18,15 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "robofox_type",
             description="Type/series of used IBT robot.",
-            choices=["61814v3"],
-            default_value="61814v3",
+            choices=["robofox_61814v3"],
+            default_value="robofox_61814v3",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "prefix",
             default_value='robofox',
-            description="Prefix of the joint names, useful for "
-            "multi-robot setup. If changed than also joint names in the controllers' configuration "
-            "have to be updated.",
+            description="Prefix of the joint names, useful for multi-robot setup."
         )
     )
 
