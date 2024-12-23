@@ -8,7 +8,8 @@
     robofox_type:='robofox_61814v3'
     connected_to:='' 
     *origin
-    physical_params_file"
+    physical_params_file
+    joint_limits_file"
   >
     <xacro:property name="physical_params"
       value="${physical_params_file}" />
@@ -16,6 +17,13 @@
       value="${xacro.load_yaml(physical_params)}" />
     <xacro:property name="sec_inertia_parameters"
       value="${config_physical_parameters['inertial_parameters']}" />
+    
+    <xacro:property name="joint_limits"
+      value="${joint_limits_file}"/>
+    <xacro:property name="config_joint_limits"
+      value="${xacro.load_yaml(joint_limits)}" />
+    <xacro:property name="sec_limits"
+      value="${config_joint_limits['joint_limits']}"/>
 
     <!-- INERTIA PARAMETERS -->
     <!-- mass -->
@@ -197,10 +205,10 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="-${pi}"
-        upper="${pi}"
-        effort="600"
-        velocity="1.2436" />
+        lower="${sec_limits['joint1']['min_position']}"
+        upper="${sec_limits['joint1']['max_position']}"
+        effort="${sec_limits['joint1']['max_effort']}"
+        velocity="${sec_limits['joint1']['max_velocity']}" />
       <dynamics
         damping="1"
         friction="0.1" />
@@ -257,10 +265,10 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="-${pi}"
-        upper="${pi}"
-        effort="690"
-        velocity="0.86" />
+        lower="${sec_limits['joint2']['min_position']}"
+        upper="${sec_limits['joint2']['max_position']}"
+        effort="${sec_limits['joint2']['max_effort']}"
+        velocity="${sec_limits['joint2']['max_velocity']}" />
       <dynamics
         damping="1"
         friction="0.1" />
@@ -317,10 +325,10 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="-4.71"
-        upper="4.71"
-        effort="350"
-        velocity="1.24" />
+        lower="${sec_limits['joint3']['min_position']}"
+        upper="${sec_limits['joint3']['max_position']}"
+        effort="${sec_limits['joint3']['max_effort']}"
+        velocity="${sec_limits['joint3']['max_velocity']}" />
       <dynamics
         damping="1"
         friction="0.1" />
@@ -377,10 +385,10 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="-8.0"
-        upper="8.0"
-        effort="145"
-        velocity="2.71" />
+        lower="${sec_limits['joint4']['min_position']}"
+        upper="${sec_limits['joint4']['max_position']}"
+        effort="${sec_limits['joint4']['max_effort']}"
+        velocity="${sec_limits['joint4']['max_velocity']}" />
       <dynamics
         damping="1"
         friction="0.1" />
@@ -437,10 +445,10 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="-4.71"
-        upper="4.71"
-        effort="145"
-        velocity="2.71" />
+        lower="${sec_limits['joint5']['min_position']}"
+        upper="${sec_limits['joint5']['max_position']}"
+        effort="${sec_limits['joint5']['max_effort']}"
+        velocity="${sec_limits['joint5']['max_velocity']}" />
       <dynamics
         damping="1"
         friction="0.1" />
@@ -497,10 +505,10 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="-8.0"
-        upper="8.0"
-        effort="85"
-        velocity="3.61" />
+        lower="${sec_limits['joint6']['min_position']}"
+        upper="${sec_limits['joint6']['max_position']}"
+        effort="${sec_limits['joint6']['max_effort']}"
+        velocity="${sec_limits['joint6']['max_velocity']}" />
       <dynamics
         damping="1"
         friction="0.1" />
