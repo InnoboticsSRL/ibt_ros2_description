@@ -134,8 +134,8 @@
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/baselink.STL" />
+          <!-- <mesh
+            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/baselink.STL" /> -->
         </geometry>
         <material
           name="">
@@ -173,8 +173,8 @@
           xyz="0 0 -0.09"
           rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link1.STL" />
+          <!-- <mesh
+            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link1.STL" /> -->
         </geometry>
         <material
           name="">

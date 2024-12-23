@@ -10,7 +10,7 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 3.5
     has_deceleration_limits: true
-    max_decelaration: -3.5
+    max_deceleration: -3.5
     max_effort: 600
 
   joint2:
@@ -21,7 +21,7 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 3.5
     has_deceleration_limits: true
-    max_decelaration: -3.5
+    max_deceleration: -3.5
     max_effort: 690
 
   joint3:
@@ -32,7 +32,7 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 3.5
     has_deceleration_limits: true
-    max_decelaration: -3.5
+    max_deceleration: -3.5
     max_effort: 350
 
   joint4:
@@ -43,7 +43,7 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 3.5
     has_deceleration_limits: true
-    max_decelaration: -3.5
+    max_deceleration: -3.5
     max_effort: 145
 
   joint5:
@@ -54,7 +54,7 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 3.5
     has_deceleration_limits: true
-    max_decelaration: -3.5
+    max_deceleration: -3.5
     max_effort: 145
 
   joint6:
