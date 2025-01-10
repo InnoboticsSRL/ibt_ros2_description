@@ -15,8 +15,6 @@ ibt_ros2_description
 │   └── robofox_display.launch.py
 ├── meshes
 │   └── robofox_61814v3
-│       ├── collision
-│       │   ├── *.STL
 │       └── visual
 │           ├── *.STL
 └── xacro
@@ -24,4 +22,11 @@ ibt_ros2_description
     ├── robofox.urdf.xacro
     └── robofox.xacro
 
+```
+
+## How to use
+If you want to use `*.urdf` file remeber to regenerate it after changing of parameters `joint_limits.yaml` and `physical_parameters.yaml` using the command
+```bash
+~/ibt_ros2_description/xacro$ . ../install/setup.bash 
+~/ibt_ros2_description/xacro$ xacro robofox.urdf.xacro > robofox.urdf
 ```
