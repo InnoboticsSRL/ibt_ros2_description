@@ -115,7 +115,7 @@ inertial_parameters:
       translation:
         x: 0.0005
         y: 0.00001
-        z: 0.33234
+        z: -0.02566
       rotation:
         r: 0.0
         p: 0.0
