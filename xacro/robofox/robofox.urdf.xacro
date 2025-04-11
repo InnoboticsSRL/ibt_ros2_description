@@ -8,7 +8,7 @@
     <xacro:arg name="joint_limits_file"
         default="$(find ibt_ros2_description)/config/$(arg robofox_type)/joint_limits.yaml" />
 
-    <xacro:include filename="$(find ibt_ros2_description)/xacro/robofox.xacro" />
+    <xacro:include filename="$(find ibt_ros2_description)/xacro/robofox/robofox.xacro" />
 
     <xacro:robofox
         prefix="$(arg prefix)"

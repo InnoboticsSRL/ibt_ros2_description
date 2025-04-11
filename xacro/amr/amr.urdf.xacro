@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="amr">
+
+    <xacro:include filename="$(find ibt_ros2_description)/xacro/amr/amr.xacro" />
+    
+    <xacro:amr name="base_footprint" parent="base_link">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:amr>
+
+</robot>
