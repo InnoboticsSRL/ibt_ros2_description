@@ -1,4 +1,4 @@
-# @brief     Launch file for visualizing the models of the robofox robot
+# @brief     Launch file for visualizing the models of the combofox robot
 #
 # @author    Mattia Dei Rossi <mattia.deirossi@innobotics.it>
 # @copyright (C) IBT
@@ -36,7 +36,7 @@ def generate_launch_description():
     pkg_dir = get_package_share_directory('ibt_ros2_description')
 
     # Configuration files
-    xacro_file = os.path.join(pkg_dir, 'xacro', 'robofox/robofox.urdf.xacro')
+    xacro_file = os.path.join(pkg_dir, 'xacro', 'combofox/combofox.urdf.xacro')
     robot_description = Command([FindExecutable(name='xacro'),
                                  ' ', xacro_file,
                                  ' ', 'arm_type:=', arm_type,

@@ -4,8 +4,8 @@
   <!-- robofox macro -->
   <xacro:macro name="robofox"
     params="
-    prefix:='robofox' 
-    robofox_type:='robofox_61814v3'
+    arm_prefix:='robofox' 
+    arm_type:='robofox_61814v3'
     connected_to:='' 
     *origin
     physical_params_file
@@ -108,14 +108,14 @@
     <xacro:unless value="${not connected_to}">
       <joint name="world" type="fixed">
         <parent link="${connected_to}" />
-        <child link="${prefix}_base_link" />
+        <child link="${arm_prefix}_base_link" />
         <xacro:insert_block name="origin" />
       </joint>
     </xacro:unless>
 
     <!-- chain -->
     <link
-      name="${prefix}_base_link">
+      name="${arm_prefix}_base_link">
       <inertial>
         <origin
           xyz="${base_link_mass_trans['x']} ${base_link_mass_trans['y']} ${base_link_mass_trans['z']}"
@@ -135,7 +135,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/base_link.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/base_link.STL" />
         </geometry>
         <material
           name="">
@@ -149,12 +149,12 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/base_link.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/base_link.STL" />
         </geometry>
       </collision>
     </link>
     <link
-      name="${prefix}_link1">
+      name="${arm_prefix}_link1">
       <inertial>
         <origin
           xyz="${link1_mass_trans['x']} ${link1_mass_trans['y']} ${link1_mass_trans['z']}"
@@ -174,7 +174,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link1.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link1.STL" />
         </geometry>
         <material
           name="">
@@ -188,20 +188,20 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link1.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link1.STL" />
         </geometry>
       </collision>
     </link>
     <joint
-      name="${prefix}_joint1"
+      name="${arm_prefix}_joint1"
       type="revolute">
       <origin
         xyz="0 0 0.119"
         rpy="0 0 0" />
       <parent
-        link="${prefix}_base_link" />
+        link="${arm_prefix}_base_link" />
       <child
-        link="${prefix}_link1" />
+        link="${arm_prefix}_link1" />
       <axis
         xyz="0 0 -1" />
       <limit
@@ -214,7 +214,7 @@
         friction="0.1" />
     </joint>
     <link
-      name="${prefix}_link2">
+      name="${arm_prefix}_link2">
       <inertial>
         <origin
           xyz="${link2_mass_trans['x']} ${link2_mass_trans['y']} ${link2_mass_trans['z']}"
@@ -234,7 +234,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link2.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link2.STL" />
         </geometry>
         <material
           name="">
@@ -248,20 +248,20 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link2.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link2.STL" />
         </geometry>
       </collision>
     </link>
     <joint
-      name="${prefix}_joint2"
+      name="${arm_prefix}_joint2"
       type="revolute">
       <origin
         xyz="0 0 0"
         rpy="-${pi/2.0} -${pi/2.0} 0" />
       <parent
-        link="${prefix}_link1" />
+        link="${arm_prefix}_link1" />
       <child
-        link="${prefix}_link2" />
+        link="${arm_prefix}_link2" />
       <axis
         xyz="0 0 -1" />
       <limit
@@ -274,7 +274,7 @@
         friction="0.1" />
     </joint>
     <link
-      name="${prefix}_link3">
+      name="${arm_prefix}_link3">
       <inertial>
         <origin
           xyz="${link3_mass_trans['x']} ${link3_mass_trans['y']} ${link3_mass_trans['z']}"
@@ -294,7 +294,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link3.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link3.STL" />
         </geometry>
         <material
           name="">
@@ -308,20 +308,20 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link3.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link3.STL" />
         </geometry>
       </collision>
     </link>
     <joint
-      name="${prefix}_joint3"
+      name="${arm_prefix}_joint3"
       type="revolute">
       <origin
         xyz="0.725 0 0"
         rpy="0 0 ${pi}" />
       <parent
-        link="${prefix}_link2" />
+        link="${arm_prefix}_link2" />
       <child
-        link="${prefix}_link3" />
+        link="${arm_prefix}_link3" />
       <axis
         xyz="0 0 -1" />
       <limit
@@ -334,7 +334,7 @@
         friction="0.1" />
     </joint>
     <link
-      name="${prefix}_link4">
+      name="${arm_prefix}_link4">
       <inertial>
         <origin
           xyz="${link4_mass_trans['x']} ${link4_mass_trans['y']} ${link4_mass_trans['z']}"
@@ -354,7 +354,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link4.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link4.STL" />
         </geometry>
         <material
           name="">
@@ -368,20 +368,20 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link4.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link4.STL" />
         </geometry>
       </collision>
     </link>
     <joint
-      name="${prefix}_joint4"
+      name="${arm_prefix}_joint4"
       type="revolute">
       <origin
         xyz="0 0 0"
         rpy="${pi/2.0} 0 0" />
       <parent
-        link="${prefix}_link3" />
+        link="${arm_prefix}_link3" />
       <child
-        link="${prefix}_link4" />
+        link="${arm_prefix}_link4" />
       <axis
         xyz="0 0 -1" />
       <limit
@@ -394,7 +394,7 @@
         friction="0.1" />
     </joint>
     <link
-      name="${prefix}_link5">
+      name="${arm_prefix}_link5">
       <inertial>
         <origin
           xyz="${link5_mass_trans['x']} ${link5_mass_trans['y']} ${link5_mass_trans['z']}"
@@ -414,7 +414,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link5.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link5.STL" />
         </geometry>
         <material
           name="">
@@ -428,20 +428,20 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link5.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link5.STL" />
         </geometry>
       </collision>
     </link>
     <joint
-      name="${prefix}_joint5"
+      name="${arm_prefix}_joint5"
       type="revolute">
       <origin
         xyz="0 0 0.6751"
         rpy="-${pi/2.0} ${pi/2.0} 0" />
       <parent
-        link="${prefix}_link4" />
+        link="${arm_prefix}_link4" />
       <child
-        link="${prefix}_link5" />
+        link="${arm_prefix}_link5" />
       <axis
         xyz="0 0 -1" />
       <limit
@@ -454,7 +454,7 @@
         friction="0.1" />
     </joint>
     <link
-      name="${prefix}_link6">
+      name="${arm_prefix}_link6">
       <inertial>
         <origin
           xyz="${link6_mass_trans['x']} ${link6_mass_trans['y']} ${link6_mass_trans['z']}"
@@ -474,7 +474,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link6.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link6.STL" />
         </geometry>
         <material
           name="">
@@ -488,20 +488,20 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://ibt_ros2_description/meshes/${robofox_type}/visual/link6.STL" />
+            filename="package://ibt_ros2_description/meshes/${arm_type}/visual/link6.STL" />
         </geometry>
       </collision>
     </link>
     <joint
-      name="${prefix}_joint6"
+      name="${arm_prefix}_joint6"
       type="revolute">
       <origin
         xyz="0 -0.36 0"
         rpy="${pi/2.0} ${pi} 0" />
       <parent
-        link="${prefix}_link5" />
+        link="${arm_prefix}_link5" />
       <child
-        link="${prefix}_link6" />
+        link="${arm_prefix}_link6" />
       <axis
         xyz="0 0 -1" />
       <limit

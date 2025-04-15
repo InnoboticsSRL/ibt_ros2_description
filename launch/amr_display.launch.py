@@ -10,37 +10,15 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration
 from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument
+# from launch.actions import DeclareLaunchArgument
 
-def generate_launch_description():
-    declared_arguments = []
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "arm_type",
-            description="Type/series of used IBT robot.",
-            choices=["robofox_61814v3"],
-            default_value="robofox_61814v3",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "arm_prefix",
-            default_value='robofox',
-            description="Prefix of the joint names, useful for multi-robot setup."
-        )
-    )
-
-    arm_type = LaunchConfiguration("arm_type")
-    arm_prefix = LaunchConfiguration("arm_prefix")
-    
+def generate_launch_description():    
     pkg_dir = get_package_share_directory('ibt_ros2_description')
 
     # Configuration files
-    xacro_file = os.path.join(pkg_dir, 'xacro', 'robofox/robofox.urdf.xacro')
+    xacro_file = os.path.join(pkg_dir, 'xacro', 'amr/amr.urdf.xacro')
     robot_description = Command([FindExecutable(name='xacro'),
-                                 ' ', xacro_file,
-                                 ' ', 'arm_type:=', arm_type,
-                                 ' ', 'arm_prefix:=', arm_prefix
+                                 ' ', xacro_file
                                  ])
     rviz_config_path = os.path.join(pkg_dir, 'config', 'config.rviz')
 
@@ -74,4 +52,4 @@ def generate_launch_description():
         rviz_node
     ]
 
-    return LaunchDescription(declared_arguments + nodes)
+    return LaunchDescription(nodes)
