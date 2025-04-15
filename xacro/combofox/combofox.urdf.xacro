@@ -1,6 +1,7 @@
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro" name="robofox">
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="amr">
 
+    <!-- Arguments for robofox -->
     <xacro:arg name="arm_prefix" default="robofox" />
     <xacro:arg name="arm_type" default="robofox_61814v3" />
     <xacro:arg name="physical_params_file"
@@ -8,15 +9,24 @@
     <xacro:arg name="joint_limits_file"
         default="$(find ibt_ros2_description)/config/$(arg arm_type)/joint_limits.yaml" />
 
+    <!-- Amr combo base -->
+    <xacro:include filename="$(find ibt_ros2_description)/xacro/amr/amr.xacro" />
+    <!-- Robotic arm -->
     <xacro:include filename="$(find ibt_ros2_description)/xacro/robofox/robofox.xacro" />
 
+    <!-- Instances -->
+    <xacro:amr name="base_footprint" parent="base_link">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:amr>
+
     <xacro:robofox
-        arm_prefix="$(arg arm_prefix)"
+        arm_prefix="robofox"
         physical_params_file="$(arg physical_params_file)"
         joint_limits_file="$(arg joint_limits_file)"
         arm_type="$(arg arm_type)"
+        connected_to="agv_link1"
     >
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
     </xacro:robofox>
 
 </robot>
