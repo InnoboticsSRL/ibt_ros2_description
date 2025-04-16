@@ -1,6 +1,6 @@
 <package format="2">
   <name>ibt_ros2_description</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>
     <p>URDF Description package for robofox robots</p>
     <p>This package contains configuration data, 3D models and launch files for robofox robots</p>
