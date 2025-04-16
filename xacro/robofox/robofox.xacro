@@ -203,7 +203,7 @@
       <child
         link="${arm_prefix}_link1" />
       <axis
-        xyz="0 0 -1" />
+        xyz="0 0 1" />
       <limit
         lower="${sec_limits['joint1']['min_position']}"
         upper="${sec_limits['joint1']['max_position']}"
@@ -263,7 +263,7 @@
       <child
         link="${arm_prefix}_link2" />
       <axis
-        xyz="0 0 -1" />
+        xyz="0 0 1" />
       <limit
         lower="${sec_limits['joint2']['min_position']}"
         upper="${sec_limits['joint2']['max_position']}"
@@ -323,7 +323,7 @@
       <child
         link="${arm_prefix}_link3" />
       <axis
-        xyz="0 0 -1" />
+        xyz="0 0 1" />
       <limit
         lower="${sec_limits['joint3']['min_position']}"
         upper="${sec_limits['joint3']['max_position']}"
@@ -383,7 +383,7 @@
       <child
         link="${arm_prefix}_link4" />
       <axis
-        xyz="0 0 -1" />
+        xyz="0 0 1" />
       <limit
         lower="${sec_limits['joint4']['min_position']}"
         upper="${sec_limits['joint4']['max_position']}"
@@ -443,7 +443,7 @@
       <child
         link="${arm_prefix}_link5" />
       <axis
-        xyz="0 0 -1" />
+        xyz="0 0 1" />
       <limit
         lower="${sec_limits['joint5']['min_position']}"
         upper="${sec_limits['joint5']['max_position']}"
@@ -503,7 +503,7 @@
       <child
         link="${arm_prefix}_link6" />
       <axis
-        xyz="0 0 -1" />
+        xyz="0 0 1" />
       <limit
         lower="${sec_limits['joint6']['min_position']}"
         upper="${sec_limits['joint6']['max_position']}"
