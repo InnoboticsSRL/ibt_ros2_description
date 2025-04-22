@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot
   name="amr" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="amr" params="amr_prefix connected_to:='' *origin">
+  <xacro:macro name="amr" params="amr_prefix:='' connected_to:='' *origin">
 
     <!-- virtual joint -->
     <xacro:unless value="${not connected_to}">
