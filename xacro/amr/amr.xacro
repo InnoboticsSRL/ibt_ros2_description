@@ -30,7 +30,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 ${pi}" />
       <geometry>
         <mesh
           filename="package://ibt_ros2_description/meshes/amr/base_link.STL" />
@@ -44,7 +44,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 ${pi}" />
       <geometry>
         <mesh
           filename="package://ibt_ros2_description/meshes/amr/base_link.STL" />
