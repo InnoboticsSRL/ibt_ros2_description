@@ -3,7 +3,7 @@
 
     <xacro:include filename="$(find ibt_ros2_description)/xacro/amr/amr.xacro" />
     
-    <xacro:amr name="base_footprint" parent="base_link">
+    <xacro:amr>
         <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:amr>
 
