@@ -8,7 +8,7 @@
     </xacro:amr>
 
     <!-- Camera for docking -->
-    <xacro:arg name="use_nominal_extrinsics" default="false" />
+    <!-- <xacro:arg name="use_nominal_extrinsics" default="false" />
     <xacro:arg name="add_plug" default="false" />
     <xacro:arg name="use_mesh" default="true" />
     <xacro:include filename="$(find realsense2_description)/urdf/_d415.urdf.xacro" />
@@ -17,7 +17,7 @@
         add_plug="$(arg add_plug)"
         use_mesh="$(arg use_mesh)">
         <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:sensor_d415>
+    </xacro:sensor_d415> -->
 
     <!-- Camera for calibration -->
     <!-- <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>

@@ -780,8 +780,8 @@
     name="${amr_prefix}camera_calibration_mount"
     type="fixed">
     <origin
-        xyz="-0.45105 0.0 0.2825"
-        rpy="0 0 ${pi}" />
+        xyz="0.45105 0.0 0.2825"
+        rpy="0 0 0" />
     <parent
       link="${amr_prefix}base_link" />
     <child

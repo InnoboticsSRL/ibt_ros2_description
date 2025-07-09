@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="amr">
 
-    <!-- Arguments for robofox -->
+    <!-- Arguments -->
     <xacro:arg name="arm_prefix" default="robofox" />
     <xacro:arg name="arm_type" default="robofox_61814v3" />
     <xacro:arg name="physical_params_file"
         default="$(find ibt_ros2_description)/config/$(arg arm_type)/physical_parameters.yaml" />
     <xacro:arg name="joint_limits_file"
         default="$(find ibt_ros2_description)/config/$(arg arm_type)/joint_limits.yaml" />
+    <xacro:arg name="use_nominal_extrinsics" default="false" />
+    <xacro:arg name="camera_name" default="d435i" />
+	<!--xacro:arg name="parent_frame" default="GRIPPER" /-->
+    <!-- TODO: update position values -->
+	<xacro:arg name="cam_pos_x" default="0" />
+	<xacro:arg name="cam_pos_y" default="0.13204" />
+	<xacro:arg name="cam_pos_z" default="-0.0660" />
+	<xacro:arg name="cam_roll" default="3.1416" />
+	<xacro:arg name="cam_pitch" default="-1.5708" />
+	<xacro:arg name="cam_yaw" default="1.5708" />
+	<xacro:arg name="has_imu" default="false" />
 
     <!-- Amr combo base -->
     <xacro:include filename="$(find ibt_ros2_description)/xacro/amr/amr.xacro" />
     <!-- Robotic arm -->
     <xacro:include filename="$(find ibt_ros2_description)/xacro/robofox/robofox.xacro" />
+    <!-- Gripper -->
+    <xacro:include filename="$(find grip_exon)/urdf/grip_exon.urdf.xacro" />
+    <!-- Camera -->
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
+
 
     <!-- Instances -->
     <xacro:amr>
@@ -28,5 +45,22 @@
     >
         <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
     </xacro:robofox>
+
+  <xacro:grip_exon parent="robofox_link6">
+    <origin xyz="0 0 0" rpy="0 0 ${pi/2}"/>
+  </xacro:grip_exon>
+
+    <!-- Camera for arm -->
+    <xacro:sensor_d435
+        name="$(arg camera_name)"
+        parent="GRIPPER"
+    >
+        <origin xyz="$(arg cam_pos_x) $(arg cam_pos_y) $(arg cam_pos_z)" rpy="$(arg cam_roll) $(arg cam_pitch) $(arg cam_yaw)" />
+    </xacro:sensor_d435>
+
+    <!-- Camera for calibration of the base -->
+    <xacro:sensor_d435i parent="camera_calibration_mount" use_nominal_extrinsics="$(arg use_nominal_extrinsics)">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:sensor_d435i>
 
 </robot>
