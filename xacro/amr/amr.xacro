@@ -30,7 +30,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 ${pi}" />
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://ibt_ros2_description/meshes/amr/base_link.STL" />
@@ -44,7 +44,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 ${pi}" />
+        rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://ibt_ros2_description/meshes/amr/base_link.STL" />
@@ -96,7 +96,7 @@
     type="fixed">
     <origin
       xyz="0 0 0"
-      rpy="0 0 3.1416" />
+      rpy="0 0 0" />
     <parent
       link="${amr_prefix}base_link" />
     <child
@@ -209,7 +209,7 @@
     name="${amr_prefix}mpo_700_wheel_front_left_joint"
     type="revolute">
     <origin
-      xyz="0 0.0603 -0.122"
+      xyz="0 -0.0603 -0.122"
       rpy="0 0 3.1416" />
     <parent
       link="${amr_prefix}mpo_700_caster_front_left_link" />
@@ -331,7 +331,7 @@
     name="${amr_prefix}mpo_700_wheel_back_left_joint"
     type="revolute">
     <origin
-      xyz="0 0.0603 -0.122"
+      xyz="0 -0.0603 -0.122"
       rpy="0 0 -3.1416" />
     <parent
       link="${amr_prefix}mpo_700_caster_back_left_link" />
@@ -393,7 +393,7 @@
     type="revolute">
     <origin
       xyz="0.26 -0.26 0.22"
-      rpy="0 0 3.1416" />
+      rpy="0 0 0" />
     <parent
       link="${amr_prefix}base_footprint" />
     <child
@@ -453,14 +453,14 @@
     name="${amr_prefix}mpo_700_wheel_front_right_joint"
     type="revolute">
     <origin
-      xyz="0 0.0603 -0.122"
+      xyz="0 -0.0603 -0.122"
       rpy="0 0 3.1416" />
     <parent
       link="${amr_prefix}mpo_700_caster_front_right_link" />
     <child
       link="${amr_prefix}mpo_700_wheel_front_right_link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit
       lower="-1E+16"
       upper="1E+16"
@@ -515,7 +515,7 @@
     type="revolute">
     <origin
       xyz="-0.26 -0.26 0.22"
-      rpy="0 0 3.1416" />
+      rpy="0 0 0" />
     <parent
       link="${amr_prefix}base_footprint" />
     <child
@@ -575,14 +575,14 @@
     name="${amr_prefix}mpo_700_wheel_back_right_joint"
     type="revolute">
     <origin
-      xyz="0 0.0603 -0.122"
+      xyz="0 -0.0603 -0.122"
       rpy="0 0 3.1416" />
     <parent
       link="${amr_prefix}mpo_700_caster_back_right_link" />
     <child
       link="${amr_prefix}mpo_700_wheel_back_right_link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit
       lower="-1E+16"
       upper="1E+16"
@@ -633,7 +633,7 @@
     </collision>
   </link>
   <joint
-    name="${amr_prefix}lidar_1_link"
+    name="${amr_prefix}lidar_2_link"
     type="fixed">
     <origin
       xyz="0.36 -0.36 0.2465"
@@ -641,7 +641,7 @@
     <parent
       link="${amr_prefix}base_link" />
     <child
-      link="${amr_prefix}lidar_1_link" />
+      link="${amr_prefix}lidar_2_link" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -686,7 +686,7 @@
     </collision>
   </link>
   <joint
-    name="${amr_prefix}lidar_2_link"
+    name="${amr_prefix}lidar_1_link"
     type="fixed">
     <origin
       xyz="-0.36 0.36 0.2465"
@@ -694,7 +694,7 @@
     <parent
       link="${amr_prefix}base_link" />
     <child
-      link="${amr_prefix}lidar_2_link" />
+      link="${amr_prefix}lidar_1_link" />
     <axis
       xyz="0 0 0" />
   </joint>
@@ -742,8 +742,8 @@
     name="${amr_prefix}agv_link1"
     type="fixed">
     <origin
-      xyz="0.237000000000006 0 1.446"
-      rpy="0 0 1.5707963267949" />
+      xyz="-0.237 0 1.446"
+      rpy="0 0 -${pi/2}" />
     <parent
       link="${amr_prefix}base_link" />
     <child
