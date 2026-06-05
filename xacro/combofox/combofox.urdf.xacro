@@ -14,10 +14,7 @@
     <!-- Robotic arm -->
     <xacro:include filename="$(find ibt_ros2_description)/xacro/robofox/robofox.xacro" />
 
-    <!-- Tray Gripper -->
-    <xacro:include filename="$(find tray_gripper)/xacro/tray_gripper.xacro" />
-    <!-- Camera Tray Gripper -->
-    <xacro:include filename="$(find camera_tray)/xacro/camera_tray.xacro" />
+    <!-- Gripper -->
 
     <!-- Realsense D415 camera -->
     <xacro:arg name="use_nominal_extrinsics" default="false" />
@@ -40,18 +37,6 @@
         <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
     </xacro:robofox>
 
-    <!-- Gripper -->
-    <xacro:tray_gripper
-        connected_to="robofox_link6"
-    >
-        <origin xyz="0 0 0" rpy="0 0 1.57" />
-    </xacro:tray_gripper>
-    <!-- Camera Gripper -->
-    <xacro:camera_tray
-        connected_to="tray_gripper_camera"
-    >
-        <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:camera_tray>
 
     <!-- Camera docking -->
     <xacro:sensor_d415 parent="camera_docking_mount"
