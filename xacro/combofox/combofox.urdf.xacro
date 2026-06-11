@@ -47,11 +47,11 @@
         <origin xyz="0 0 0" rpy="0 0 1.57" />
     </xacro:tray_gripper>
     <!-- Camera Gripper -->
-    <xacro:camera_tray
+    <!-- <xacro:camera_tray
         connected_to="tray_gripper_camera"
     >
         <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:camera_tray>
+    </xacro:camera_tray> -->
 
     <!-- Camera docking -->
     <xacro:sensor_d415 parent="camera_docking_mount"
