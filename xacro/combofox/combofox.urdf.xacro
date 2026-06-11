@@ -14,7 +14,8 @@
     <!-- Robotic arm -->
     <xacro:include filename="$(find ibt_ros2_description)/xacro/robofox/robofox.xacro" />
 
-    <!-- Gripper -->
+    <!-- Bucket Gripper -->
+    <xacro:include filename="$(find bucket_gripper)/xacro/bucket_gripper.xacro" />
 
     <!-- Realsense D415 camera -->
     <xacro:arg name="use_nominal_extrinsics" default="false" />
@@ -37,6 +38,12 @@
         <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
     </xacro:robofox>
 
+    <!-- Gripper -->
+    <xacro:bucket_gripper
+        connected_to="robofox_link6"
+    >
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:bucket_gripper>
 
     <!-- Camera docking -->
     <xacro:sensor_d415 parent="camera_docking_mount"
