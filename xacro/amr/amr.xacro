@@ -761,8 +761,8 @@
     name="${amr_prefix}camera_docking_mount"
     type="fixed">
     <origin
-        xyz="0 0.4105 0.1195"
-        rpy="0 0 1.57" />
+        xyz="0 -0.4105 0.1195"
+        rpy="0 0 -1.57" />
     <parent
       link="${amr_prefix}base_link" />
     <child
